@@ -1,44 +1,45 @@
-chrome.runtime.onInstalled.addListener(function() {
-    chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
-      chrome.declarativeContent.onPageChanged.addRules([
+chrome.runtime.onInstalled.addListener(function () {
+    chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
+        chrome.declarativeContent.onPageChanged.addRules([
             {
                 conditions: [
                     new chrome.declarativeContent.PageStateMatcher({
-                        pageUrl: { 
+                        pageUrl: {
                             urlMatches: 'calendar.google.com',
-                            schemes: ['https', 'http'] 
+                            schemes: ['https', 'http']
                         },
-                    }) , 
+                    }),
                     new chrome.declarativeContent.PageStateMatcher({
-                        pageUrl: { 
+                        pageUrl: {
                             urlMatches: 'drive.google.com',
-                            schemes: ['https', 'http'] 
+                            schemes: ['https', 'http']
                         },
-                    }) , 
+                    }),
                     new chrome.declarativeContent.PageStateMatcher({
-                        pageUrl: { 
+                        pageUrl: {
                             urlMatches: 'mail.google.com',
-                            schemes: ['https', 'http'] 
+                            schemes: ['https', 'http']
                         },
                     })
                 ],
-                actions: [ new chrome.declarativeContent.ShowPageAction() ]
+                actions: [new chrome.declarativeContent.ShowPageAction()]
             }
         ]);
     });
 });
 
-chrome.pageAction.onClicked.addListener(function(tab) {
-    let url = tab.url
-    if (urlMatches = "mail.google.com"){
-        url = url.replace(/(?!mail\.google\.com\/mail\/u\/)(\d+)(?=\/)/, "$1" + 1);
+chrome.pageAction.onClicked.addListener(function (tab) {
+    let url = new URL(tab.url)
+    let updatedUrl = url.href;
+    if (url.host === "mail.google.com") {
+        updatedUrl = updatedUrl.replace(/(?!mail\.google\.com\/mail\/u\/)(\d+)(?=\/)/, "$1" + 1);
     }
-    else if (urlMatches = "calendar.google.com"){
-        url = url.replace(/(?!calendar\.google\.com\/calendar\/u\/)(\d+)(?=\/)/, "$1" + 1);
+    else if (url.host === "calendar.google.com") {
+        updatedUrl = updatedUrl.replace(/(?!calendar\.google\.com\/calendar\/u\/)(\d+)(?=\/)/, "$1" + 1);
     }
-    else if (urlMatches = "drive.google.com"){
-        url = url.replace(/(?!drive\.google\.com\/drive\/u\/)(\d+)(?=\/)/, "$1" + 1);
+    else if (url.host === "drive.google.com") {
+        updatedUrl = updatedUrl.replace(/(?!drive\.google\.com\/drive\/u\/)(\d+)(?=\/)/, "$1" + 1);
     }
-    
-    chrome.tabs.update(tab.id, { url: url});
+
+    chrome.tabs.update(tab.id, { url: updatedUrl });
 });
