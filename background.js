@@ -17,6 +17,12 @@ chrome.runtime.onInstalled.addListener(function () {
                     }),
                     new chrome.declarativeContent.PageStateMatcher({
                         pageUrl: {
+                            urlMatches: 'meet.google.com',
+                            schemes: ['https', 'http']
+                        },
+                    }),
+                    new chrome.declarativeContent.PageStateMatcher({
+                        pageUrl: {
                             urlMatches: 'mail.google.com',
                             schemes: ['https', 'http']
                         },
@@ -39,6 +45,12 @@ chrome.pageAction.onClicked.addListener(function (tab) {
     }
     else if (url.host === "drive.google.com") {
         updatedUrl = updatedUrl.replace(/(?!drive\.google\.com\/drive\/u\/)(\d+)(?=\/)/, "$1" + 1);
+    }
+    else if (url.host === "meet.google.com") {
+        const authuser = url.searchParams.get('authuser') || "0"
+        const updatedAuthuser = (parseInt(authuser) + 1).toString()
+        url.searchParams.set('authuser', updatedAuthuser)
+        updatedUrl = url.href
     }
 
     chrome.tabs.update(tab.id, { url: updatedUrl });
