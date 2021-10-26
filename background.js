@@ -38,20 +38,35 @@ chrome.pageAction.onClicked.addListener(function (tab) {
     let url = new URL(tab.url)
     let updatedUrl = url.href;
     if (url.host === "mail.google.com") {
-        updatedUrl = updatedUrl.replace(/(?!mail\.google\.com\/mail\/u\/)(\d+)(?=\/)/, "$1" + 1);
+        updatedUrl = updatedUrl.replace(/(?!mail\.google\.com\/mail\/u\/)(\d+)(?=\/)/, (_, p1) => {
+            return addOneToString(p1)
+        });
     }
     else if (url.host === "calendar.google.com") {
-        updatedUrl = updatedUrl.replace(/(?!calendar\.google\.com\/calendar\/u\/)(\d+)(?=\/)/, "$1" + 1);
+        updatedUrl = updatedUrl.replace(/(?!calendar\.google\.com\/calendar\/u\/)(\d+)(?=\/)/, (_, p1) => {
+            return addOneToString(p1)
+        });
     }
     else if (url.host === "drive.google.com") {
-        updatedUrl = updatedUrl.replace(/(?!drive\.google\.com\/drive\/u\/)(\d+)(?=\/)/, "$1" + 1);
+        updatedUrl = updatedUrl.replace(/(?!drive\.google\.com\/drive\/u\/)(\d+)(?=\/)/, (_, p1) => {
+            return addOneToString(p1)
+        });
     }
     else if (url.host === "meet.google.com") {
         const authuser = url.searchParams.get('authuser') || "0"
-        const updatedAuthuser = (parseInt(authuser) + 1).toString()
-        url.searchParams.set('authuser', updatedAuthuser)
+        url.searchParams.set('authuser', addOneToString(authuser))
         updatedUrl = url.href
     }
 
+
+
     chrome.tabs.update(tab.id, { url: updatedUrl });
 });
+
+const addOneToString = (a) => {
+    try {
+        return (parseInt(a) + 1).toString()
+    } catch (error) {
+        return "0"
+    }
+}
