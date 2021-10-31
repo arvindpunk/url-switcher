@@ -4,7 +4,12 @@
     "description": "Quick switch Gmail accounts without opening new tabs!",
     "manifest_version": 2,
     "background": {
-        "scripts": [ "background.js" ],
+        "scripts": [
+            "utils.js",
+            "conditions.js",
+            "mappings.js",
+            "background.js"
+        ],
         "persistent": false
     },
     "permissions": [
