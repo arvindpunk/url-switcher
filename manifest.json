@@ -1,7 +1,7 @@
 {
-    "name": "Gmail Switcher",
+    "name": "Account Switcher",
     "version": "1.0",
-    "description": "Quick switch Gmail accounts without opening new tabs!",
+    "description": "Quick switch Google accounts without opening new tabs!",
     "manifest_version": 2,
     "background": {
         "scripts": [
