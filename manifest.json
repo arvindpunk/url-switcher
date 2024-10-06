@@ -1,25 +1,22 @@
 {
-    "name": "Account Switcher",
-    "version": "1.0",
-    "description": "Quick switch Google accounts without opening new tabs!",
-    "manifest_version": 2,
-    "background": {
-        "scripts": [
-            "utils.js",
-            "conditions.js",
-            "mappings.js",
-            "background.js"
-        ],
-        "persistent": false
+  "$schema": "https://json.schemastore.org/chrome-manifest.json",
+  "manifest_version": 3,
+  "version": "1.0",
+  "name": "url-switcher",
+  "description": "A minimum extension template. This template includes a manifest file.",
+  "author": "Your Name",
+  "background": {
+    "chrome:service_worker": "src/main.ts",
+    "firefox:scripts": ["src/main.ts"]
+  },
+  "permissions": ["activeTab"],
+  "action": {
+    "default_icon": {
+      "16": "images/icon16.png",
+      "24": "images/icon24.png",
+      "32": "images/icon32.png",
+      "48": "images/icon48.png"
     },
-    "permissions": [
-        "activeTab",
-        "declarativeContent"
-    ],
-    "page_action": {
-        "default_icon": {
-            "32": "icon.png"
-        },
-        "default_title": "Switch Account"
-    }
+    "default_title": "Switch Account"
+  }
 }
