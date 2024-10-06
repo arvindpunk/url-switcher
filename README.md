@@ -1,6 +1,6 @@
 # url-switcher
 
-This extension allows user to switch between google accounts for Gmail, Google Drive, Google Calendar etc. in a single click.
+An extension that allows user to quickly switch between Google accounts for Gmail, Drive, Calendar etc. with a single click.
 
 ## Supported Domains
 

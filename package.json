@@ -1,12 +1,11 @@
 {
   "private": true,
   "name": "url-switcher",
-  "description": "An Extension.js example.",
+  "description": "An extension that allows user to quickly switch between Google accounts for Gmail, Drive, Calendar etc. with a single click.",
   "version": "1.0.0",
   "author": {
-    "name": "Your Name",
-    "email": "your@email.com",
-    "url": "https://yourwebsite.com"
+    "name": "arvindpunk",
+    "url": "https://arvindpunk.dev"
   },
   "license": "MIT",
   "devDependencies": {
@@ -18,6 +17,7 @@
   "scripts": {
     "dev": "extension dev -b firefox",
     "start": "extension start",
-    "build": "extension build --polyfill true --browser firefox,chrome"
+    "build": "extension build --polyfill true --browser firefox,chrome",
+    "publish": "extension build --zip true --polyfill true --browser firefox,chrome"
   }
 }

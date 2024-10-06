@@ -1,9 +1,7 @@
 import { stringIncrement } from "./string-utils";
 import browser from "webextension-polyfill";
 
-console.log(browser.action);
-
-browser.action.onClicked.addListener(function (tab) {
+browser.action.onClicked.addListener((tab: browser.Tabs.Tab) => {
   console.log(tab);
   if (typeof tab.url === "undefined") return;
   if (typeof tab.id === "undefined") return;
@@ -13,7 +11,7 @@ browser.action.onClicked.addListener(function (tab) {
   browser.tabs.update(tab.id, { url: updatedUrl });
 });
 
-const getTransformedURL = (currentUrl: string) => {
+const getTransformedURL = (currentUrl: string): string => {
   const url = new URL(currentUrl);
   switch (url.host) {
     // path params

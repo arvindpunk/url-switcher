@@ -1,4 +1,4 @@
-export const stringIncrement = (numberString: string) => {
+export const stringIncrement = (numberString: string): string => {
   try {
     return (parseInt(numberString) + 1).toString();
   } catch (error) {
