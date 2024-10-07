@@ -2,9 +2,10 @@
   "private": true,
   "name": "url-switcher",
   "description": "An extension that allows user to quickly switch between Google accounts for Gmail, Drive, Calendar etc. with a single click.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "arvindpunk",
+    "email": "arvindpunk@gmail.com",
     "url": "https://arvindpunk.dev"
   },
   "license": "MIT",

@@ -1,13 +1,19 @@
 {
   "$schema": "https://json.schemastore.org/chrome-manifest.json",
   "manifest_version": 3,
-  "version": "1.0.0",
-  "name": "url-switcher",
+  "version": "1.0.1",
+  "name": "URL switcher",
   "description": "An extension that allows user to quickly switch between Google accounts for Gmail, Drive, Calendar etc. with a single click.",
   "author": "arvindpunk",
   "background": {
     "chrome:service_worker": "src/main.ts",
     "firefox:scripts": ["src/main.ts"]
+  },
+  "firefox:browser_specific_settings": {
+    "gecko": {
+      "id": "{ac04aa84-8d5e-42e4-9a82-423c23f3bdcf}",
+      "strict_min_version": "109.0"
+    }
   },
   "permissions": ["activeTab"],
   "action": {
