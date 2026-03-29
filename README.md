@@ -1,5 +1,8 @@
 # url-switcher
 
+[![Chrome Web Store Version](https://img.shields.io/chrome-web-store/v/ejemleeceilggholjjpfgmlmcjglocnn)](https://chromewebstore.google.com/detail/url-switcher/ejemleeceilggholjjpfgmlmcjglocnn)
+[![Mozilla Add-on Version](https://img.shields.io/amo/v/url-switcher)](https://addons.mozilla.org/en-US/firefox/addon/url-switcher)
+
 An extension that allows user to quickly switch between Google accounts for Gmail, Drive, Calendar etc. with a single click.
 
 ## Supported Domains
